@@ -25,8 +25,10 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
         KC_7,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
         KC_8,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
         KC_9,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
-                        KC_2,    KC_3,    KC_4,    KC_5,
-						KC_2,    KC_3,    KC_4,    KC_5
+                        KC_2,    KC_3,    
+						                  KC_4,    KC_5,
+						                  KC_6,    KC_7,
+										  KC_8,    KC_9
     )};
 
 void setupKeymap() {
@@ -58,7 +60,7 @@ void process_user_layers(uint16_t layermask)
  * |-----------------------------------------|
  * | Tab  |   Q  |   W  |   F  |   P  |   B  | 
  * |------+------+------+------+------+------|
- * | Bksp |   A  |   R  |   S  |   T  |   G  |
+ * | Macro|   A  |   R  |   S  |   T  |   G  |
  * |------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   D  |   V  |
  * `------+------+------+------+------+------'
@@ -68,7 +70,7 @@ void process_user_layers(uint16_t layermask)
  *                             `---------------------------. 
  *                                           | Bksp | Ctrl |
  *                                           --------------| 
- *                                           |Macro |  Alt |
+ *                                           | Tab  |  Alt |
  *                                           --------------' 
  */
 
@@ -76,10 +78,12 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
     {KEYMAP(
 	    KC_ESC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B, 
-        KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,
+        L_MACRO, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,
-                          KC_ESC,  KC_EQL,  L_LOWER, KC_SPC,
-						  L_MACRO, KC_LALT, KC_BSPC, KC_LCTL
+                          KC_ESC,  KC_EQL,  
+											L_LOWER, KC_SPC,
+											KC_BSPC, KC_LCTL,
+											KC_TAB,  KC_LALT
     )};
 
  
@@ -115,8 +119,6 @@ void setupKeymap() {
  * |      |  GUI | ALT  | SHFT | CTRL | Save |
  * |------+------+------+------+------+------|
  * |      | Undo | Cut  | Copy | Paste| Dup  |
- * |------+------+------+------+------+------|
- * |      |      |      |      |      |      |
  * `-----------------------------------------'
  *               |      |      |
  *               `---------------------------.
@@ -133,8 +135,10 @@ void setupKeymap() {
   _______,KC_LOCK,XXXXXXX,KC_SWP, KC_CAPS,KC_BRK,  \
   _______,KC_LGUI,KC_LALT,KC_LSFT,KC_LCTL,KC_SVE,  \
   _______,KC_UND, KC_CUT, KC_CPY, KC_PST, _______, \
-                  _______,_______,_______,_______, \
-				  _______,_______,_______,_______  \
+                  _______,_______,                 \
+								  _______,_______, \
+								  _______,_______, \
+								  _______,_______  \
 );
 
 /* Raise
@@ -146,8 +150,6 @@ void setupKeymap() {
  * |      |  7   |  5   |  3   |  1   |  9   |
  * |------+------+------+------+------+------|
  * |      |  `   |  [   |  ]   |  _   |  =   |
- * |------+------+------+------+------+------|
- * |      |      |      |      |      |      |
  * `-----------------------------------------'
   *              |      |      |
  *               `---------------------------.
@@ -164,8 +166,10 @@ void setupKeymap() {
   _______,KC_AMPR, KC_PERC,KC_HASH,KC_LPRN,KC_EXLM, \
   _______,KC_7,    KC_5,   KC_3,   KC_1,   KC_9,    \
   _______,KC_GRAVE,KC_LBRC,KC_RBRC,KC_UNDS,KC_EQL,  \
-                   _______,_______,_______,_______, \
-				   _______,_______,_______,_______  \
+                  _______,_______,                 \
+								  _______,_______, \
+								  _______,_______, \
+								  _______,_______  \
 );
 /*
     uint32_t shift[MATRIX_ROWS][MATRIX_COLS] =
@@ -180,11 +184,11 @@ void setupKeymap() {
 */
 /* Adjust
  * ,-----------------------------------------.
- * |  `   |   F1 | F2   |  F3  |  F4  |  F5  |
+ * |  `   |   F1 |  F2  |  F3  |  F4  |  F5  |
  * |------+------+------+------+------+-------
  * |      |      |      |      |      |      |
  * |------+------+------+------+------+------|
- * |      |      |      |      |      |      |
+ * |      |      |      | 40%  | Clmk |      |
  * |------+------+------+------+------+------+
  * |      |      |      |      |      |      |
  * `-----------------------------------------'
@@ -203,18 +207,22 @@ void setupKeymap() {
   _______, _______,_______,_______, _______, _______, \
   _______, _______,_______,KM_FOURTY,KM_COLEMAK,_______,  \
   _______, _______,_______,_______, _______, _______, \
-                   _______,_______, _______, _______, \
-				   _______,_______, _______, _______  \  
+                   _______,_______,                 \
+								  _______,_______, \
+								  _______,_______, \
+								  _______,_______  \ 
 );
 
     uint32_t macro[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-  PRINT_BATTERY,HOME_ADD,EMAIL_1,EMAIL_2,WORK_PWD,XXXXXXX, \		
+  PRINT_BATTERY,HOME_ADD,EMAIL_1,EMAIL_2,WORK_ADD,XXXXXXX, \		
   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
   PRINT_INFO,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
-                  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
-				  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX  \
+                  XXXXXXX,XXXXXXX,				   \
+								  XXXXXXX,XXXXXXX, \
+								  XXXXXXX,XXXXXXX, \
+								  XXXXXXX,XXXXXXX  \
 );
 
     /*
@@ -245,8 +253,11 @@ uint32_t colemak[MATRIX_ROWS][MATRIX_COLS] =
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B, 
         KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,
-                          KC_ESC,  KC_EQL,  L_LOWER, KC_SPC,
-						  L_MACRO, KC_LALT, KC_BSPC, KC_LCTL);
+                          KC_ESC,  KC_EQL,  
+											L_LOWER, KC_SPC,
+											KC_BSPC, KC_LCTL,
+											L_MACRO, KC_LALT
+			);
 
 uint32_t fourty[MATRIX_ROWS][MATRIX_COLS] =
     KEYMAP(    
@@ -254,8 +265,11 @@ uint32_t fourty[MATRIX_ROWS][MATRIX_COLS] =
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B, 
         KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,
-                          KC_ESC,  KC_EQL,  L_LOWER, KC_SPC,
-						  L_MACRO, KC_LALT, KC_BSPC, KC_LCTL);						  
+                          KC_ESC,  KC_EQL,  
+											L_LOWER, KC_SPC,
+											KC_BSPC, KC_LCTL,
+											L_MACRO, KC_LALT
+			);					  
 						  
  switch ((macroid))
  { 
@@ -278,16 +292,16 @@ uint32_t fourty[MATRIX_ROWS][MATRIX_COLS] =
         }
      break; 
      case HOME_ADD:
-     addStringToQueue("123 Park Ave");
+     addStringToQueue("123 Quiet Crescent");
      break;
-     case WORK_PWD:
-     addStringToQueue("pwd");
+     case WORK_ADD:
+     addStringToQueue("123 Work Place");
       break;
      case EMAIL_1:
-     addStringToQueue("home@gmail.com");
+     addStringToQueue("Primary@Email");
       break;
      case EMAIL_2:
-     addStringToQueue("work@gmail.com");
+     addStringToQueue("Other@Email");
       break;   
  }
 }
@@ -315,7 +329,7 @@ void process_user_layers(uint16_t layermask)
  *                `-----------------------------------------'
  *                              |   -  |   *  |
  *                ,---------------------------'
- *                | Shift| L(2) |
+ *                | Shift| Raise|
  *  ,---------------------------' 
  *  | Ctrl | Enter|
  *  |-------------| 
@@ -329,8 +343,10 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCOLON, KC_BSPACE, 
         KC_M,    KC_N,    KC_E,    KC_I,    KC_O,      KC_QUOTE,
         KC_K,    KC_H,    KC_COMMA,KC_DOT,  KC_SLSH,   KC_ENT,
-        KC_LSFT, L_RAISE, KC_MINS ,KC_QUOTE, 
-		KC_RCTL, KC_ENT,  KC_LGUI, KC_DEL
+                          KC_MINS ,KC_QUOTE, 
+		KC_LSFT, L_RAISE,				  
+		KC_RCTL, KC_ENT,
+		KC_LGUI, KC_DEL
     )};
 
  
@@ -403,8 +419,10 @@ void setupKeymap() {
   KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_DEL,  _______,  \
   KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, _______,  \
   KC_INS , XXXXXXX, KC_COMMA,KC_DOT,  KC_SLSH, _______,  \
-  _______, _______, _______, _______,                              \
-  _______, _______, _______, _______                               \ 
+                    _______, _______,                    \
+  _______, _______,                                      \
+  _______, _______,                                      \
+  _______, _______                                       \ 
 );
 
 /* Raise
@@ -432,8 +450,10 @@ void setupKeymap() {
   KC_ASTR, KC_RPRN, KC_AT,   KC_DLR,  KC_CIRC, _______,  \
   KC_8,    KC_0,    KC_2,    KC_4,    KC_6,    KC_BSLS,  \
   KC_PLUS, KC_MINUS,KC_COMMA,KC_DOT,  KC_SLSH, _______,  \
-  _______, _______, _______, _______,                    \
-  _______, _______, _______, _______                     \ 
+                    _______, _______,                    \
+  _______, _______,                                      \
+  _______, _______,                                      \
+  _______, _______                                       \ 
 );
 /*
     uint32_t shift[MATRIX_ROWS][MATRIX_COLS] =
@@ -453,7 +473,7 @@ void setupKeymap() {
  *                |-----------------------------------------|
  *                |      |      |      | F11  | F12  |      |
  *                |------+------+------+------+-------------|
- *                |      |      |      |      |      |      |
+ *                |      | Clmk | 40%  |      |      |      |
  *                |------+------+------+------+------|------|
  *                |      |      |      |      |      |      |
  *                `-----------------------------------------'
@@ -470,20 +490,24 @@ void setupKeymap() {
         KEYMAP( \
   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,  \
   _______, _______, _______, KC_F11,  KC_F12,  _______,  \
-  _______, KM_COLEMAK, KM_FOURTY, _______, _______, _______,  \   
+  _______, KM_COLEMAK, KM_FOURTY, _______, _______, _______,\   
   _______, _______, _______, _______, _______, _______,  \
-  _______, _______, _______, _______,                    \
-  _______, _______, _______, _______                     \ 
+                    _______, _______,                    \
+  _______, _______,                                      \
+  _______, _______,                                      \
+  _______, _______                                       \ 
 );
 
     uint32_t macro[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,PRINT_BATTERY, \		
+  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,PRINT_BATTERY,\		
   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
   XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
-  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,PRINT_INFO, \
-  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, \
-  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX  \
+  XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,PRINT_INFO,\
+                  XXXXXXX,XXXXXXX,                 \
+  XXXXXXX,XXXXXXX,                                 \
+  XXXXXXX,XXXXXXX,                                 \
+  XXXXXXX,XXXXXXX                                  \
 );
     /*
      * add the other layers
@@ -515,8 +539,11 @@ uint32_t colemak[MATRIX_ROWS][MATRIX_COLS] =
         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCOLON, KC_BSPACE, 
         KC_M,    KC_N,    KC_E,    KC_I,    KC_O,      KC_QUOTE,
         KC_K,    KC_H,    KC_COMMA,KC_DOT,  KC_SLSH,   KC_ENT,
-        KC_LSFT, L_RAISE, KC_MINS ,KC_ASTR, 
-		KC_RCTL, KC_ENT,  KC_LGUI, KC_DEL);
+                          KC_MINS ,KC_QUOTE,
+		KC_LSFT, L_RAISE,						  
+		KC_RCTL, KC_ENT,  
+		KC_LGUI, KC_DEL
+		);
 		
 uint32_t fourty[MATRIX_ROWS][MATRIX_COLS] =
     KEYMAP(       
@@ -524,8 +551,11 @@ uint32_t fourty[MATRIX_ROWS][MATRIX_COLS] =
         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCOLON, KC_BSPACE, 
         KC_M,    KC_N,    KC_E,    KC_I,    KC_O,      KC_QUOTE,
         KC_K,    KC_H,    KC_COMMA,KC_DOT,  KC_SLSH,   KC_ENT,
-        KC_LSFT, L_RAISE, KC_MINS ,KC_ASTR, 
-		KC_RCTL, KC_ENT,  KC_LGUI, KC_DEL);
+                          KC_MINS ,KC_QUOTE,
+		KC_LSFT, L_RAISE,						  
+		KC_RCTL, KC_ENT,  
+		KC_LGUI, KC_DEL
+		);
 		
  switch ((macroid))
  { 

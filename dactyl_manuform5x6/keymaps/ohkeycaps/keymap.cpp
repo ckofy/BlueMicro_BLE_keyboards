@@ -25,8 +25,10 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
         KC_7,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
         KC_8,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
         KC_9,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
-                        KC_2,    KC_3,    KC_4,    KC_5,
-						KC_2,    KC_3,    KC_4,    KC_5
+                        KC_2,    KC_3,    
+						                  KC_4,    KC_5,
+						                  KC_6,    KC_7,
+										  KC_8,    KC_9
     )};
 
 void setupKeymap() {
@@ -65,12 +67,11 @@ void process_user_layers(uint16_t layermask)
  *               |   [  |   ]  |
  *               `---------------------------.
  *                             |Lower |Space |
- *                             `---------------------------. 
- *                                           |(2)Tab |(1)Home|
- *                                           ----------------| 
- *                                           |(4)BSpc|(3) `  |
- *                                           ----------------' 
- * Thumb cluster keys are numbered by their columns assignment
+ *                             `-------------------------. 
+ *                                           | Tab | Home|
+ *                                           ------------| 
+ *                                           | BSpc|  `  |
+ *                                           ------------' 
  */
 
 std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
@@ -79,9 +80,10 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, 
         KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
         KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
-                          KC_LBRC, KC_RBRC, L_LOWER, KC_SPC,
-						// 4        3        2        1 
-						  KC_BSPC, KC_GRAVE,KC_TAB,  KC_HOME
+                          KC_LBRC, KC_RBRC, 
+											L_LOWER, KC_SPC,
+						                    KC_TAB,  KC_HOME,
+											KC_BSPC, KC_GRAVE
     )};
 
  
@@ -109,13 +111,14 @@ void setupKeymap() {
  */
     uint32_t lower[MATRIX_ROWS][MATRIX_COLS] =
         KEYMAP( \
-  KC_F12, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5, \
+  KC_F12, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,   \
   _______,_______,_______,_______,_______,_______, \
   KC_CAPS,KC_LGUI,KC_LALT,KC_LSFT,KC_LCTL,_______, \
   _______,KC_UND, KC_CUT, KC_CPY, KC_PST, _______, \
-                  _______,_______,_______,_______, \
-				// 4        3        2        1 
-				  _______,_______,_______,_______  \
+                  _______,_______,                 \
+				                  _______,_______, \
+				                  _______,_______, \
+                 				  _______,_______  \
 );
 
 /* Raise
@@ -143,9 +146,10 @@ void setupKeymap() {
   KC_MUTE,KC_HOME,KC_PGDN,KC_PGUP,KC_END ,KC_LBRC, \
   KC_VOLU,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT,KC_LPRN, \
   KC_VOLD,_______,_______,_______,_______,_______, \
-                  _______,_______,_______,_______, \
-				// 4        3        2        1 
-				  _______,_______,_______,_______  \
+                  _______,_______,                 \
+				                  _______,_______, \
+				                  _______,_______, \
+                 				  _______,_______  \
 );
  
 /* Adjust
@@ -173,9 +177,10 @@ void setupKeymap() {
   _______, _______,_______,_______, _______, _______, \
   _______,_______,KM_DVORAK,KM_COLEMAK,KM_QWERTY,_______,  \
   PRINT_INFO, _______,_______,_______, _______, _______, \
-                   _______,_______, _______, _______, \
-				 // 4        3        2        1 
-				   _______,_______, _______, _______  \  
+                  _______,_______,                 \
+				                  _______,_______, \
+				                  _______,_______, \
+                 				  _______,_______  \
 );
 
     /*
@@ -201,8 +206,10 @@ uint32_t qwerty[MATRIX_ROWS][MATRIX_COLS] =
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, 
         KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
         KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
-                          KC_LBRC, KC_RBRC, L_LOWER, KC_SPC,
-						  KC_BSPC, KC_GRAVE,KC_TAB,  KC_HOME
+                          KC_LBRC, KC_RBRC, 
+						                    L_LOWER, KC_SPC,
+						                    KC_TAB,  KC_HOME,
+											KC_BSPC, KC_GRAVE
 	);
 	
 uint32_t colemak[MATRIX_ROWS][MATRIX_COLS] =
@@ -211,8 +218,10 @@ uint32_t colemak[MATRIX_ROWS][MATRIX_COLS] =
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G, 
         KC_LSFT, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,
         KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
-                          KC_LBRC, KC_RBRC, L_LOWER, KC_SPC,
-						  KC_BSPC, KC_GRAVE,KC_TAB,  KC_HOME
+                          KC_LBRC, KC_RBRC, 
+						                    L_LOWER, KC_SPC,
+						                    KC_TAB,  KC_HOME,
+											KC_BSPC, KC_GRAVE
 	);
 
 uint32_t dvorak[MATRIX_ROWS][MATRIX_COLS] =
@@ -221,8 +230,10 @@ uint32_t dvorak[MATRIX_ROWS][MATRIX_COLS] =
         KC_TAB,  KC_QUOTE,KC_COMMA,KC_DOT,  KC_P,    KC_Y, 
         KC_LSFT, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,
         KC_LCTL, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,
-                          KC_LBRC, KC_RBRC, L_LOWER, KC_SPC,
-						  KC_BSPC, KC_GRAVE,KC_TAB,  KC_HOME
+                          KC_LBRC, KC_RBRC, 
+						                    L_LOWER, KC_SPC,
+						                    KC_TAB,  KC_HOME,
+											KC_BSPC, KC_GRAVE
 	);					  
 						  
  switch ((macroid))
@@ -293,12 +304,11 @@ void process_user_layers(uint16_t layermask)
  *                              |   +  |   =  |
  *                ,---------------------------'
  *                | Enter| Raise|
- *  ,---------------------------' 
- *  |(1)End|(2)Del|
- *  |-------------| 
- *  |(3)GUI|(4)Alt|
- *  `-------------' 
- * Thumb cluster keys are numbered by their columns assignment
+ *    ,-------------------------' 
+ *    | End | Del |
+ *    |-----------| 
+ *    | GUI | Alt |
+ *    `-----------' 
  */
 
 std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
@@ -307,9 +317,10 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix =
         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_MINS, 
         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCOLON,KC_QUOTE,
         KC_N,    KC_M,    KC_COMMA,KC_DOT,  KC_SLSH,  KC_BSLS,
-        KC_ENT,  L_RAISE, KC_PLUS ,KC_EQL, 
-    //   1        2        3        4  
-		KC_END,  KC_DEL,  KC_LGUI, KC_LALT
+                          KC_PLUS ,KC_EQL, 
+        KC_ENT,  L_RAISE,
+		KC_END,  KC_DEL,  
+		KC_LGUI, KC_LALT
     )};
 
  
@@ -342,9 +353,10 @@ void setupKeymap() {
   KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_DEL,  _______,  \
   KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, _______,  \
   KC_INS , XXXXXXX, KC_COMMA,KC_DOT,  KC_SLSH, _______,  \
-  _______, _______, _______, _______,                    \
-//   1        2        3        4 
-  _______, _______, _______, _______                     \ 
+                    _______, _______,                    \
+  _______, _______,                                      \
+  _______, _______,                                      \
+  _______, _______                                       \ 
 );
 
 /* Raise
@@ -372,9 +384,10 @@ void setupKeymap() {
   KC_RBRC, KC_P7 ,  KC_P8 ,  KC_P9 ,  KC_MINS, KC_UNDS,  \
   KC_RPRN, KC_P4 ,  KC_P5 ,  KC_P6 ,  KC_PLUS, KC_PIPE,  \
   KC_NLCK, KC_P1 ,  KC_P2 ,  KC_P3 ,  KC_SLSH, _______,  \
-  _______, _______, KC_P0 ,  KC_DOT,                     \
-//   1        2        3        4 
-  _______, _______, _______, _______                     \ 
+                    KC_P0 ,  KC_DOT,                     \
+  _______, _______,                                      \
+  _______, _______,                                      \
+  _______, _______                                       \ 
 );
 
 /* Adjust
@@ -402,9 +415,10 @@ void setupKeymap() {
   _______, _______, _______, _______, _______, _______,  \
   _______,KM_QWERTY,KM_COLEMAK,KM_DVORAK,_______,_______,  \   
   _______, _______, _______, _______, _______, PRINT_INFO,  \
-  _______, _______, _______, _______,                    \
-//   1        2        3        4 
-  _______, _______, _______, _______                     \ 
+                    _______, _______,                    \
+  _______, _______,                                      \
+  _______, _______,                                      \
+  _______, _______                                       \ 
 );
 
     /*
@@ -431,8 +445,10 @@ uint32_t qwerty[MATRIX_ROWS][MATRIX_COLS] =
         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_MINS, 
         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCOLON,KC_QUOTE,
         KC_N,    KC_M,    KC_COMMA,KC_DOT,  KC_SLSH,  KC_BSLS,
-        KC_ENT,  L_RAISE, KC_PLUS ,KC_EQL, 
-		KC_END,  KC_DEL,  KC_LGUI, KC_LALT
+                          KC_PLUS ,KC_EQL, 
+        KC_ENT,  L_RAISE,
+		KC_END,  KC_DEL,  
+		KC_LGUI, KC_LALT
 		);
 
 uint32_t colemak[MATRIX_ROWS][MATRIX_COLS] =
@@ -441,8 +457,10 @@ uint32_t colemak[MATRIX_ROWS][MATRIX_COLS] =
         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCOLON, KC_MINS, 
         KC_H,    KC_N,    KC_E,    KC_I,    KC_O,      KC_QUOTE,
         KC_K,    KC_M,    KC_COMMA,KC_DOT,  KC_SLSH,   KC_BSLS,
-        KC_ENT,  L_RAISE, KC_PLUS ,KC_EQL, 
-		KC_END,  KC_DEL,  KC_LGUI, KC_LALT
+                          KC_PLUS ,KC_EQL, 
+        KC_ENT,  L_RAISE,
+		KC_END,  KC_DEL,  
+		KC_LGUI, KC_LALT
 		);
 		
 uint32_t dvorak[MATRIX_ROWS][MATRIX_COLS] =
@@ -451,8 +469,10 @@ uint32_t dvorak[MATRIX_ROWS][MATRIX_COLS] =
         KC_F,    KC_G,    KC_C,    KC_R,    KC_L,      KC_MINS, 
         KC_D,    KC_H,    KC_T,    KC_N,    KC_S,      KC_RSFT,
         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,      KC_BSLS,
-        KC_ENT,  L_RAISE, KC_PLUS ,KC_EQL, 
-		KC_END,  KC_DEL,  KC_LGUI, KC_LALT
+                          KC_PLUS ,KC_EQL, 
+        KC_ENT,  L_RAISE,
+		KC_END,  KC_DEL,  
+		KC_LGUI, KC_LALT
 		);
 		
  switch ((macroid))
